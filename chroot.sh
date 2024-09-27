@@ -9,23 +9,21 @@ ln -s /bin/nvim /bin/vi
 systemctl enable NetworkManager
 systemctl enable systemd-timesyncd.service
 
-cd etc
-
-echo "en_US.UTF-8 UTF-8" > locale.gen
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 locale-gen
-echo "LANG=en_US.UTF-8" > locale.conf
-echo archlinux > hostname
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo archlinux > /etc/hostname
 
-vi mkinitcpio.conf
+vi /etc/mkinitcpio.conf
 mkinitcpio -P
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB &&
-vi default/grub
+vi /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg &&
 
-vi pacman.conf
+vi /etc/pacman.conf
 
 visudo &&
-read -P 'username:' username &&
-useradd -mG wheel -s /bin/fish $username &&
+read -p 'username:' username &&
+useradd -mG wheel -s /bin/fish $username
 passwd $username

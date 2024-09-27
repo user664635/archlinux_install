@@ -5,7 +5,7 @@ pacman -S noto-fonts-{cjk,emoji,extra} ttf-hack-nerd wl-clipboard plasma-{deskto
 
 tools
 ```
-code rnote bottom scrcpy clang mold rustup
+rnote bottom scrcpy clang mold rustup
 ```
 
 install cargo
